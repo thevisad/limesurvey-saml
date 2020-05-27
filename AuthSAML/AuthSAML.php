@@ -2,6 +2,8 @@
 /*
  * SAML Authentication plugin for LimeSurvey
  * Copyright (C) 2013 Sixto Pablo Martin Garcia <sixto.martin.garcia@gmail.com>
+ * Modified by (C) thevisad <sixto.martin.garcia@gmail.com>
+
  * License: GNU/GPL License v2 http://www.gnu.org/licenses/gpl-2.0.html
  * URL: https://github.com/pitbulk/limesurvey-saml
  * A plugin of LimeSurvey, a free software. This version may have been modified pursuant
@@ -9,6 +11,7 @@
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
+
 
 class AuthSAML extends AuthPluginBase
 {
@@ -94,10 +97,8 @@ class AuthSAML extends AuthPluginBase
 	    }
         return $this->ssp;
     }
- 
-    public function __construct(PluginManager $manager, $id) {
-        parent::__construct($manager, $id);
-
+	
+	public function init(){
         $this->storage = $this->get('storage_base', null, null, 'DbStorage');
 
         // Here you should handle subscribing to the events your plugin will handle
@@ -109,11 +110,11 @@ class AuthSAML extends AuthPluginBase
             $this->subscribe('newLoginForm');
         }
     }
-
+	
     public function beforeLogin()
     {
-        $ssp = $this->get_saml_instance();
-
+		$ssp = $this->get_saml_instance();
+			
         if ($this->get('force_saml_login', null, null, false)) {
             $ssp->requireAuth();
         }
@@ -122,7 +123,7 @@ class AuthSAML extends AuthPluginBase
             $this->newUserSession();
         }
     }
-
+	
     public function afterLogout()
     {
         $ssp = $this->get_saml_instance();
@@ -134,7 +135,7 @@ class AuthSAML extends AuthPluginBase
         $authtype_base = $this->get('authtype_base', null, null, 'Authdb');
 
         $ssp = $this->get_saml_instance();
-        $this->getEvent()->getContent($authtype_base)->addContent('<li><center>Click on that button to initiate SAML Login<br><a href="'.$ssp->getLoginURL().'" title="SAML Login"><img src="'.Yii::app()->getConfig('imageurl').'/saml_logo.gif"></a></center><br></li>', 'prepend');
+        $this->getEvent()->getContent($authtype_base)->addContent('<li><center>Click below for CFIGroup SAML Login<br><a href="'.$ssp->getLoginURL().'" title="SAML Login"><img src="'.Yii::app()->getConfig('imageurl').'/saml_logo.gif"></a></center><br></li>', 'prepend');
     }
 
     public function getUserName()
@@ -186,10 +187,9 @@ class AuthSAML extends AuthPluginBase
     }
 
     public function newUserSession()
-    {
+    {	
         $ssp = $this->get_saml_instance();
         if ($ssp->isAuthenticated()) {
-
             $sUser = $this->getUserName();
             $_SERVER['REMOTE_USER'] = $sUser;
 
@@ -199,11 +199,13 @@ class AuthSAML extends AuthPluginBase
             $name = $this->getUserCommonName();
             $mail = $this->getUserMail();
 
-            $oUser = $this->api->getUserByName($sUser);
+            $oUser = $this->api->getUserByName($sUser);		
+			
             if (is_null($oUser))
             {
                 // Create user
                 $auto_create_users = $this->get('auto_create_users', null, null, true);
+				
                 if ($auto_create_users) {
 
                     $iNewUID = User::model()->insertUser($sUser, $password, $name, 1, $mail);
@@ -226,6 +228,7 @@ class AuthSAML extends AuthPluginBase
                 }
             } else {
                 // Update user?
+				
                 $auto_update_users = $this->get('auto_update_users', null, null, true);
                 if ($auto_update_users) {
                     $changes = array (

@@ -1,12 +1,6 @@
 
-Warning!
-========
-This SAML plugin only works for very old Limesurvey instances. (2.X)
-
-I implemented comercial SAML plugin based on simpleSAMLphp as well as a version based on
-php-saml which allows you adding the IdP settings on the LimeSurvey SAML configuration section.
-It is compatible with Limesurvey3 and Limesurvey4 and has multiple features:
-
+Lime Survey 4.x supported Auth SAML plugin 
+- Based on the original work from https://github.com/pitbulk/limesurvey-saml and upgraded to the latest version. 
 - Based on simpleSAMLphp or php-saml (configuration directly done on Limesurvey settings, instead simpleSAMLphp that manages it via filesystem).
 - Supports multiple Identity providers
 - Just-in-time provisioning (auto-crate users) assigning the permissions you set on the settings.
@@ -18,17 +12,13 @@ It is compatible with Limesurvey3 and Limesurvey4 and has multiple features:
 - Ability to force SAML login on Limesurvey Login form.
 - Avoid accounts created by SAML to login using normal login
 
-Soon will be available at the LimeStore, but if you need it now, contact me at sixto.martin.garcia+limesurvey@gmail.com
-
-I also offer commercial support for 50€/h payable via Paypal or Wire-Transfer.
-
 
 limesurvey-saml  (version 0.1)
 ==============================
 
 SAML Authentication plugin for limesurvey (based on simpleSAMLphp)
 
-The limesurvey-saml-0.1 works with limesurvey 2.0.5
+The limesurvey-saml-0.1 works with limesurvey 4.x
 
 
 This plugin allow you enable different workflows:
@@ -58,7 +48,12 @@ This plugin allow you enable different workflows:
 Author
 ------
 
-Author: Sixto Martin Garcia <sixto.martin.garcia.@gmail.com>
+4.0 version Author Sean Rice <thevisad@gmail.com>
+
+https://www.linkedin.com/in/seanrice/
+
+
+Original Author: Sixto Martin Garcia <sixto.martin.garcia.@gmail.com>
 
 http://es.linkedin.com/in/sixtomartin/en
 

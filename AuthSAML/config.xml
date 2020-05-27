@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <metadata>
+        <name>SAML authentication plugin</name>
+        <type>plugin</type>
+        <creationDate>2020-05-04</creationDate>
+        <last_update>2020-05-06</last_update>
+        <author>TheVisad</author>
+        <authorEmail>thevisad+authsaml@gmail.com</authorEmail>
+        <authorUrl>https://github.com/thevisad/limesurvey-saml</authorUrl>
+        <version>1.0.0</version>
+        <license>GNU General Public License version 4 or later</license>
+        <description><![CDATA[SAML authentication plugin to LimeSurvey 4+.]]></description>
+    </metadata>
+
+    <compatibility>
+        <version>4.0</version>
+    </compatibility>
+
+    <updaters disabled="disabled">
+    </updaters>
+</config>
