@@ -125,7 +125,7 @@ SimpleSAML_Session::getSessionFromRequest()->cleanup();
     {
         $authtype_base = $this->get('authtype_base', null, null, 'Authdb');
         $ssp = $this->get_saml_instance();
-        $this->getEvent()->getContent($authtype_base)->addContent('<li><center>Click below for CFIGroup SAML Login<br><a href="'.$ssp->getLoginURL().'" title="SAML Login"><img src="'.Yii::app()->getConfig('imageurl').'/saml_logo.gif"></a></center><br></li>', 'prepend');
+        $this->getEvent()->getContent($authtype_base)->addContent('<li><center>Click below for SAML Login<br><a href="'.$ssp->getLoginURL().'" title="SAML Login"><img src="'.Yii::app()->getConfig('imageurl').'/saml_logo.gif"></a></center><br></li>', 'prepend');
     }
     public function getUserName()
     {
