@@ -113,12 +113,12 @@ class AuthSAML extends AuthPluginBase
     public function afterLogout()
     {
         $ssp = $this->get_saml_instance();
-        $ssp->logout('https://survey.test.gov.cfigroup.com/index.php?r=admin/authentication/sa/login');
+        $ssp->logout('https://logouturl/index.php?r=admin/authentication/sa/login');
 SimpleSAML_Session::getSessionFromRequest()->cleanup();
     }
     public function beforeLogout() {
         $ssp = $this->get_saml_instance();
-        $ssp->logout('https://survey.test.gov.cfigroup.com/index.php?r=admin/authentication/sa/login');
+        $ssp->logout('https://logouturl/index.php?r=admin/authentication/sa/login');
 		SimpleSAML_Session::getSessionFromRequest()->cleanup();
     }
     public function newLoginForm()
